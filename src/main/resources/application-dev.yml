@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: "IoT-Platform-BE"
+  security:
+    user:
+      name: "hoang"
+      password: "123456"
