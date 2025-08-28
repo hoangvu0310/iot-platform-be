@@ -8,3 +8,18 @@ spring:
     user:
       name: "hoang"
       password: "123456"
+
+jwt:
+  secret: ${JWT_SECRET}
+
+# logging
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
+  level:
+    org.hibernate.SQL: INFO
+    org.springframework.web.client.RestTemplate: DEBUG
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+  logback:
+    access:
+      enabled: true
