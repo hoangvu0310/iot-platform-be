@@ -4,10 +4,10 @@ import com.hoangvu.iot_platform_be.shared.constants.ACCESS_TOKEN_TIME
 import com.hoangvu.iot_platform_be.shared.constants.ACCESS_TOKEN_TYPE
 import com.hoangvu.iot_platform_be.shared.constants.REFRESH_TOKEN_TIME
 import com.hoangvu.iot_platform_be.shared.constants.REFRESH_TOKEN_TYPE
-import com.hoangvu.iot_platform_be.shared.constants.Role
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
+import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
@@ -29,7 +29,7 @@ class JwtService(@Value("\${jwt.secret}") private val jwtSecret: String) {
             .setSubject(userId)
             .setExpiration(expirationTime)
             .setIssuedAt(currentTime)
-            .signWith(secret)
+            .signWith(secret, SignatureAlgorithm.HS256)
             .claim("type", type)
             .compact()
 
